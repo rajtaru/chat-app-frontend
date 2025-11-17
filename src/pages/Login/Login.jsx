@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import './Login.css'
 import assets from '../../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
   const [currState, setCurrState] = useState('Sign Up')
+  const navigate = useNavigate()
 
   return (
     <div className='login' >
       <img src={assets.logo_big} alt="" className="logo" />
-      <form  className="login-form">
+      <form onSubmit={()=>navigate('/chat')} className="login-form">
         <h2>{currState}</h2>
         {currState==='Sign Up'?<input type="text" placeholder='username' required className="form-input" />:null}
         <input type="email" placeholder='Email address' required className="form-input" />
